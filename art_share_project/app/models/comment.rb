@@ -22,6 +22,9 @@ class Comment < ApplicationRecord
     class_name: :Artwork,
     inverse_of: :comments
 
+  has_many :likes,
+    as: :likeable
+
   def self.comments_for_artwork(artwork_id)
     Artwork.find_by(id: artwork_id).comments
   end
