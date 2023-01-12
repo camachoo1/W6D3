@@ -2,8 +2,8 @@ class ArtworkSharesController < ApplicationController
   def create
     @artwork_share = ArtworkShare.new(artwork_share_params)
     if @artwork_share.save!
-      # redirect_to artwork_share_url(@artwork_share)
-        render plain: "Success!"
+      # redirect_to artwork_shares_url(@artwork_share.artwork_id)
+      render plain: "Success!"
 
     else
       render json: artwork_share.errors.full_messages, status: 422

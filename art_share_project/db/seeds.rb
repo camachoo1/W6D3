@@ -31,5 +31,9 @@ ApplicationRecord.transaction do
   share1 = ArtworkShare.create!(artwork_id: 1, viewer_id: 2)
   share2 = ArtworkShare.create!(artwork_id: 3, viewer_id: 4)
 
+  comment1 = Comment.create!(body: 'comment1 on artwork 1 from user 1', commenter_id: 1, artwork_id: 1)
+  comment2 = Comment.create!(body: 'comment2 on artwork 2 from user 1', commenter_id: 1, artwork_id: 2)
+  comment3 = Comment.create!(body: 'comment3 on artwork 3 from user 2', commenter_id: 2, artwork_id: 3)
+  comment4 = Comment.create!(body: 'comment4 on artwork 3 from user 3', commenter_id: 3, artwork_id: 3)
   puts 'Done!'
 end

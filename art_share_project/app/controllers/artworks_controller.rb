@@ -1,17 +1,14 @@
 class ArtworksController < ApplicationController
   def index
-    # if params.has_key?(:username)
-    #   @user = User.find(params[:username])
-    #   render json: @user
-    # else
-      @artworks = Artwork.all
+      # @artworks = Artwork.all
+      # render json: @artworks
+      @artworks = Artwork.artworks_for_user_id(params[:user_id])
       render json: @artworks
-    # end
-    
   end
 
   def create
     @artwork = Artwork.new(artwork_params)
+    
     if @user.save!
       redirect_to artworks_url(@artwork)
     else

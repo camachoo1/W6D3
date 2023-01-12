@@ -1,13 +1,12 @@
 class UsersController < ApplicationController
   def index
-    # if params.has_key?(:username)
-    #   @user = User.find(params[:username])
-    #   render json: @user
-    # else
+    if params[:username]
+      @user = User.find_by('username ~ ?', params[:username])
+      return render json: @user
+    else
       @users = User.all
       render json: @users
-    # end
-    
+    end
   end
 
   def create

@@ -21,5 +21,17 @@ class Artwork < ApplicationRecord
 
   belongs_to :artist,
     foreign_key: :artist_id,
-    class_name: :User
+    class_name: :User,
+    inverse_of: :artworks
+
+  has_many :comments,
+    foreign_key: :artwork_id,
+    class_name: :Comment,
+    dependent: :destroy
+
+
+  def self.artworks_for_user_id(user_id)
+    # debugger
+    @artworks = User.find_by(id: user_id).artworks + User.find_by(id: user_id).shared_artwork
+  end
 end
